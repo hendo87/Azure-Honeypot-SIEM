@@ -103,3 +103,13 @@ We will create the Linux VM the same way as the Windows VM except for a few mino
 
 ![Linux VM](https://github.com/hendo87/Azure-Honeypot-SIEM/assets/95535877/c1a683cf-23d2-4b14-9360-60b18e39dea6)
 
+<br>
+
+<ul><li>Set Admin account to same username and password as the Windows VM so its easy to remember</li>
+<li>Confirm Licensing</li>
+<li>Select Next : Disks ></li>
+<li>Leave all Disks to Defaults</li>
+<li>Select Next : Networking ></li>
+<li>Copy same steps as you did for the Windows VM and allow all inbound traffic</li>
+
+
