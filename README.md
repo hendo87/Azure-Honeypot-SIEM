@@ -20,3 +20,44 @@ In this project I build a honeypot and SIEM using Microsoft Azure. I start by bu
 <li><a href="https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final">NIST SP 800-53 </a> (Security Controls)</li>
 <li><a href="https://www.nist.gov/privacy-framework/nist-sp-800-61">NIST SP 800-61</a> (Incident Handling)</li>
 </ul>
+
+# Step 1. Create Windows and Linux Virtual Machines
+![create_azure_vm](https://github.com/hendo87/Azure-Honeypot-SIEM/assets/95535877/f0f9b5bc-aa29-4b7b-a8f1-ee43a3d73a66)
+
+## Basics
+<ul><li>Go to portal.azure.com</li>
+<li>Search for "virtual machines"</li>
+<li>Create > Azure virtual machine</li>
+</ul>
+
+
+### Project details
+<ul><li>Create new resource group and give it a unique name </li>
+<br>
+<i>A resource group is a collection of resources that share the same lifecycle, permissions, and policies.</i>
+</ul>
+
+### Instance details
+<ul><li>Name your VM </li>
+<li>Select a recommended region ((US) East US 2)</li>
+<li>Availability options: No infrastructure redundancy required</li>
+<li>Security type: Standard</li>
+<li>Image: Windows 10 Pro, version 21H2 - x62 Gen2</li>
+<li>VM Architecture: x64</li>
+<li>Size: Default is okay (Standard_D2s_v3 – 2vcpus, 8 GiB memory)</li>
+</ul>
+
+### Administrator account
+<ul><li>Create a username and password for virtual machine</li>
+<br>
+  <i>IMPORTANT NOTE: These credentials will be used to log into the virtual machine (Keep them handy)</i>
+</ul>
+
+### Inbound port rules
+<li>Public inbound ports: Allow RDP (3389)</li>
+
+### Licensing
+<li>Confirm licensing</li>
+<li>Select Next : Disks ></li>
+
+![vm1](https://github.com/hendo87/Azure-Honeypot-SIEM/assets/95535877/fe7bfe28-f96e-47cb-8596-a03231b01eb5)
