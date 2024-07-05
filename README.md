@@ -92,7 +92,7 @@ In this project I build a honeypot and SIEM using Microsoft Azure. I start by bu
 <i>Normally you would never allow all inbound traffic but for the purpose of this honeypot we want to make our machine easily discoverable for bad actors </i>
 <br>
 
-# Create Linux VM
+## Create Linux VM
 We will create the Linux VM the same way as the Windows VM except for a few minor changes
 
 <ul>
@@ -111,5 +111,56 @@ We will create the Linux VM the same way as the Windows VM except for a few mino
 <li>Leave all Disks to Defaults</li>
 <li>Select Next : Networking ></li>
 <li>Copy same steps as you did for the Windows VM and allow all inbound traffic</li>
+</ul>
 
+# Step 2: Create Log Analytics Workspace
 
+<br>
+
+<i>Log Analytics Workspace is a repository for storing logs in JSON format. It's a versatile tool that helps  manage and analyze large volumes of data</i>
+
+<br>
+
+<ul><li>Search for "Log analytics workspaces"</li>
+<li>Select Create Log Analytics workspace</li>
+<li>Put it in the same resource group as VM</li>
+<li>Give it a desired name</li>
+<li>Add to same Region as VM</li>
+<li>Select Review + create</li>
+</ul>
+
+![log_an_wrk](https://github.com/hendo87/Azure-Honeypot-SIEM/assets/95535877/287d2ef3-e75c-4641-bdac-1a150520d346)
+
+# Step 3: Configure Microsoft Sentinel
+
+<br>
+
+<i>Microsoft Sentinel is a cloud security information and event management service (SIEM). It is designed to provide security analytics and threat intelligence. We will forward the logs from Log Analytics Workspace to Sentinel</i>
+
+<br>
+
+<ul><li>Search for "Microsoft Sentinel"</li>
+<li>Click Create Microsoft Sentinel</li>
+<li>Select Log Analytics workspace name (honeypot-log)</li>
+<li>Click Add</li>
+</ul>
+
+![sentinel_log](https://github.com/hendo87/Azure-Honeypot-SIEM/assets/95535877/f59c6b85-e21e-4806-bff0-e2f56a947d77)
+
+<br>
+
+### Creating a Watchlist in Sentinel
+<i>In this instance the Watchlist is network blocks with corresponding latitude and longitude points , we are going to use this to derive geolocation from attackers so we can plot them on a map to see where the attacks are coming from</i>
+
+<br>
+
+<ul><li>First download Geo Data file<a href="https://github.com/joshmadakor1/Cyber-Course-v2/blob/main/Sentinel-Maps(JSON)/geoip-summarized.csv"> Here</a></li>
+  
+<li>Then in Azure search for "Microsoft Sentinel"</li>
+<li>Select the instance you've created</li>
+<li>Configurations > Watchlist </li>
+<li>Create New</li>
+<li>Name/Alias : geoip</li>
+<li>Source type: local file</li>
+<li>File Type : CSV</li>
+<li>Number of lines before row: 0</li>
