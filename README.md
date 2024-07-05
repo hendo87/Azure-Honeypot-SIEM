@@ -61,3 +61,31 @@ In this project I build a honeypot and SIEM using Microsoft Azure. I start by bu
 <li>Select Next : Disks ></li>
 
 ![vm1](https://github.com/hendo87/Azure-Honeypot-SIEM/assets/95535877/fe7bfe28-f96e-47cb-8596-a03231b01eb5)
+
+### Disks
+<ul><li>Leave all defaults</li>
+<li>Select Next : Networking ></li>
+</ul>
+
+## Networking
+### Network interface
+<ul>
+<li>NIC network security group: Advanced > Create new</li>
+  <br>
+<i>A network security group contains security rules that allow or deny inbound network traffic to, or outbound network traffic from, the virtual machine. In other words, security rules management.</i>
+</ul>
+  <br>
+<ul>  
+<li>Remove Inbound rules (1000: default-allow-rdp) by clicking three dots</li>
+<li>Add an inbound rule</li>
+<li>Destination port ranges: * (wildcard for anything)</li>
+<li>Protocol: Any</li>
+<li>Action: Allow</li>
+<li>Priority: 100 (low)</li>
+<li>Name: Anything (ALLOW_ALL_INBOUND)</li>
+<li>Select Review + create</li>
+</ul>
+
+![network_sec_grp](https://github.com/hendo87/Azure-Honeypot-SIEM/assets/95535877/f4de8fdc-17d3-4ee9-ae68-7a3db56f6b13)
+<br>
+<i>Normally you would never allow all inbound traffic but for the purpose of this honeypot we want to make our machine easily discoverable for bad actors </i>
