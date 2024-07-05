@@ -88,4 +88,18 @@ In this project I build a honeypot and SIEM using Microsoft Azure. I start by bu
 
 ![network_sec_grp](https://github.com/hendo87/Azure-Honeypot-SIEM/assets/95535877/f4de8fdc-17d3-4ee9-ae68-7a3db56f6b13)
 <br>
+
 <i>Normally you would never allow all inbound traffic but for the purpose of this honeypot we want to make our machine easily discoverable for bad actors </i>
+<br>
+
+# Create Linux VM
+We will create the Linux VM the same way as the Windows VM except for a few minor changes
+
+<ul>
+  <li>Make sure you choose the same resource group as the Windows VM</li>
+  <li>Set to the same region as the Windows VM</li>
+<li> Image: Ubuntu Server 20.04</li>
+</ul>
+
+![Linux VM](https://github.com/hendo87/Azure-Honeypot-SIEM/assets/95535877/c1a683cf-23d2-4b14-9360-60b18e39dea6)
+
