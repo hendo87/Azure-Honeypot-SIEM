@@ -171,7 +171,7 @@ We will create the Linux VM the same way as the Windows VM except for a few mino
 <i>This could take awhile there are around 27000 rows </i>
 <br>
 
-# Step 3: Configure Microsoft Defender for Cloud
+# Step 4: Configure Microsoft Defender for Cloud
 
 
 
@@ -196,3 +196,23 @@ We will create the Linux VM the same way as the Windows VM except for a few mino
 ![defender_plans](https://github.com/hendo87/Azure-Honeypot-SIEM/assets/95535877/65c42701-132f-488e-ad74-821ffd72257c)
 
 ### Enable Microsoft Defender for Cloud for Subscription
+<li>Scroll down to "Environment settings" > Azure Subscription</li>
+<li>click the 3 dots to the right to edit settings</li>
+<li>Defender Plans</li>
+<li>Server > ON , Storage > ON , Key Vault > ON </li>
+<li>On the Server tab , under monitoring coverage , select settings</li>
+
+<br>
+
+![Screenshot (58)](https://github.com/hendo87/Azure-Honeypot-SIEM/assets/95535877/9ea2d192-e2b3-488a-992b-c9c425775421)
+
+<br>
+
+<li>Log Analytic Agent > Edit Configuration</li>
+<li>Custom Workspace > Select your Log Analytic Workspace instance</li>
+<li>Select Apply > Then Continue > Save</li>
+<li>Select Continous Export > Log Analytics Workspace</li>
+<li>Check boxes for : Security Recommendations , Secure Score , Security Alerts , Regulatory Compliance , Security attack paths</li>
+<li>Scroll down to Export Configuration > Choose your resource group </li>
+<li>Export target > Target Workspace > Select your Log Analytic Workspace instance</li>
+<li>Save</li>
