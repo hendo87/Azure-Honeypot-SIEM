@@ -164,3 +164,35 @@ We will create the Linux VM the same way as the Windows VM except for a few mino
 <li>Source type: local file</li>
 <li>File Type : CSV</li>
 <li>Number of lines before row: 0</li>
+<li>Upload the Geo data file you've downloaded</li>
+<li>Search Key: Network</li>
+<li>Review and Create > Create </li></ul>
+<br>
+<i>This could take awhile there are around 27000 rows </i>
+<br>
+
+# Step 3: Configure Microsoft Defender for Cloud
+
+
+
+<ul><li>Search for "Microsoft Defender for Cloud"</li>
+<li>Scroll down to "Environment settings" > subscription name > </li>
+<li>Where you see your Log Analytics Workspace name , click the 3 dots to the right to edit settings</li>
+<br>
+  
+![mcrsft_dfndr](https://github.com/hendo87/Azure-Honeypot-SIEM/assets/95535877/1d89f1e7-1239-4c22-bf78-88c92b7e3141)
+  
+<li>Servers > Turn on > Save </li>
+<li>Settings > Data collection</li>
+<li>Select "All Events"</li>
+<li>Save</li>
+</ul>
+<br>
+
+<i>This will allow us to collect all security events from the logs</i>
+
+<br>
+
+![defender_plans](https://github.com/hendo87/Azure-Honeypot-SIEM/assets/95535877/65c42701-132f-488e-ad74-821ffd72257c)
+
+### Enable Microsoft Defender for Cloud for Subscription
