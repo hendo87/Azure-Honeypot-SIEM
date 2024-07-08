@@ -216,3 +216,56 @@ We will create the Linux VM the same way as the Windows VM except for a few mino
 <li>Scroll down to Export Configuration > Choose your resource group </li>
 <li>Export target > Target Workspace > Select your Log Analytic Workspace instance</li>
 <li>Save</li>
+
+<br>
+
+# Step 5: Enable Log Collection for VMs and Network Security Groups
+<br>
+
+## Create Azure Storage Account
+
+<i>You can think of a Storage account as place to store files , it stores the logs from the Network Security Groups momentarily before it passes on to Log Analytics Workspace</i>
+
+<ul>
+<li>Search "Storage Account" </li>
+<li>Create New</li>
+<li>Select your resource</li>
+<li>Give storage Account unique name</li>
+<li>Choose same region as your VM's</li>
+<li>Review and Create</li></ul>
+
+<br>
+
+![Storage](https://github.com/hendo87/Azure-Honeypot-SIEM/assets/95535877/3958359d-fb4a-4d49-935d-807cce118081)
+
+<br>
+
+## Enable NSG flow logs for Windows and Linux VM's
+
+<ul><li>Search "Network Security Group"</li>
+<li>Select your Windows VM</li> 
+<li>Monitoring > NSG flow logs</li>
+<li>Create Flow logs</li>
+<li>Select resource and select both Windows and Linux VM then confirm selection</li>
+<li>Now choose the storage account that you've created</li>
+<li>Retention Days: 0</li>
+<li>Go to Analytics</li>
+<li>Make sure you are on Version 2</li>
+<li>Select Enable traffic analytics</li> 
+ <br>
+  
+<i>This is where Defender will determine if traffic is malicious or beniegn . We use this later to map the attacks</i>
+
+<br>
+
+<li>Traffic Analytics Processing Interval : 10mins</li>
+<li>Log Analytic Workspace : Choose your instance</li>
+<li>Review and Create</li>
+</ul>
+
+![Screenshot (51)](https://github.com/hendo87/Azure-Honeypot-SIEM/assets/95535877/9fe1651b-e40a-4ba8-a3ed-c0427036e850)
+
+<br>
+
+
+
