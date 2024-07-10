@@ -267,5 +267,65 @@ We will create the Linux VM the same way as the Windows VM except for a few mino
 
 <br>
 
+## Configure Data Collection Rules
 
+<i>The data collection rule works in conjuction with Microsoft Defender to choose which logs are forwarded to Log Analytic Workspace , you dont want to forward all logs because that can become expensive</i>
+
+<ul>
+<li>Search "Log Analytics Workspace"</li>
+<li>Settings > Agents</li>
+<li>Select Data Collection Rules</li>
+<li>Create</li>
+<li>Choose rule name</li>
+<li>Choose same region as your Virtual MAchines</li>
+<li>Platform type : All</li>
+<li>Next > Resources</li>
+<li>Add Resources</li>
+<li>Choose the Resource group you've created , click the arrow to expand and select both your VM's</li>
+<li>Next > Collect and Deliver</li>
+<li>Add Data Source</li>
+<li>Select Linux Syslog</li>
+<li>The only log we want is the LOG_AUTH , which is the Authentication logs
+Leave it set to LOG_Debug , and turn the rest to none</li>
+
+<br>
+
+![Screenshot (55)](https://github.com/hendo87/Azure-Honeypot-SIEM/assets/95535877/36033ca6-c408-4c42-a434-0e5699639200)
+
+<li>Next > Destination</li>
+<li>Add Data Source</li>
+<li>Windows Event Log</li>
+<li>For Application select information</li>
+<li>For Security select Audit Success and Failure</li>
+<liNext > Destination></li>
+<li>Create the Data collection rule</li>
+</ul>
+
+## Configure Special Windows Event Data Collection rule
+ <i>We are creating a Data source that will log anytime our firewall is modified or if the system detects malware on the machine</i>
+
+ <ul>
+<li>Search "Log Analytic Workspace</li>
+<li>Settings > Agents</li>
+<li>Select Data Collection Rule</li>
+<li>Choose the collection rule that you have created</li>
+
+![Screenshot (56)](https://github.com/hendo87/Azure-Honeypot-SIEM/assets/95535877/caa6e9d0-0902-4f5e-9a85-840bdb216613)
+
+<br>
+
+<li>Data Sources > Windows Event Log</li>
+<li>Change from Basic to Custom</li>
+<i>We need to put a Xpath query to filter event logs</i>
+       
+        <li></li>
+         <li></li>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ </ul>
 
