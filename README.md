@@ -315,17 +315,22 @@ Leave it set to LOG_Debug , and turn the rest to none</li>
 <br>
 
 <li>Data Sources > Windows Event Log</li>
-<li>Change from Basic to Custom</li>
-<i>We need to put a Xpath query to filter event logs</i>
-       
-        <li></li>
-         <li></li>
+<li>Change from Basic to Custom</li>       
+<li>Download Xpath queries<a href="https://github.com/joshmadakor1/Cyber-Course-v2/blob/main/Special-Windows-Event-Data-Collection-Rules/Rules.txt"</a> Here</li>
+
+<br>
+
+ <i>We need to put a Xpath query to filter event logs. These queries are to trigger alerts when the firewall has been modified or when malware is detected on the system</i>
+
+ <br>
  
- 
- 
- 
- 
- 
+ ![Screenshot (57)](https://github.com/hendo87/Azure-Honeypot-SIEM/assets/95535877/e126b419-7b64-42ad-aed8-f3fe15e96091)
+
+ <br>
+
+ <li>Copy both queries and add them to the filter list</li>
+<li>Save</li>
+
  
  </ul>
 
