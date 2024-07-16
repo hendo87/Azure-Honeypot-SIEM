@@ -361,6 +361,23 @@ Leave it set to LOG_Debug , and turn the rest to none</li>
 <li>Next > Finsih</li> 
 </ul>
 
+
+
+## Configuring Azure Activity Logs
+<i>The Activity logs are the Subsciription level logging system that logs any changes made to subscriptions such as modifying any of the Azure Resources you've created. We are going to forward all these logs to the Log Analytic Workspace</i>
+<ul>
+<li>Search Monitor > Activity log</li>
+<li>Export Activity logs > Add diagnostic Settings</li>
+<li>Diagnostic setting name : choose unique name</li>
+<li>Select all categories</li>
+<li>Destination details select : Send to log analytics Workspace</li>
+<li>Save</li>
+</ul>
+
+![Screenshot (61)](https://github.com/user-attachments/assets/f375ef0b-8109-4198-9185-19c83e5e93fa)
+
+<br>
+
 # Step 6. KQL
 <i>Kusto Query Language is designed for querying large datasets. It allows users to write queries to extract, manipulate, and visualize data</i>
 
