@@ -334,3 +334,31 @@ Leave it set to LOG_Debug , and turn the rest to none</li>
  
  </ul>
 
+<br>
+
+## Installing Windows Defender Agent on virtual Machine
+
+<ul>
+<li>Search Log Analytics Workspace</li>
+<li>Select your instance</li>
+<li>Agents > </li>
+<li>Expand Log Analytics Agent Instruction</li>
+<li>Copy the workspace ID and Primary Key into a notepad , you will need it later</li>
+<li>For Download Windows Agent (64) > right click > Copy link</li>
+
+<br>
+
+![Screenshot (59)](https://github.com/user-attachments/assets/42ed0782-642b-4707-8f5d-3ef45e4e1718)
+
+<br>
+  
+<li>Open your windows virtual machine</li>
+<li>Paste the link from Download Windows Agent to in Microsoft edge</li>
+<li>Download the file</li>
+<li>Select connect agent to log analytics</li>
+<li>Paste the Workspace ID and Primary Key</li>
+<li>Azure cloud : Azure commercial</li>
+<li>Next > Finsih</li>
+
+  
+</ul>
