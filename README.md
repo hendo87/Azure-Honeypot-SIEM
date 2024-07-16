@@ -358,7 +358,14 @@ Leave it set to LOG_Debug , and turn the rest to none</li>
 <li>Select connect agent to log analytics</li>
 <li>Paste the Workspace ID and Primary Key</li>
 <li>Azure cloud : Azure commercial</li>
-<li>Next > Finsih</li>
-
-  
+<li>Next > Finsih</li> 
 </ul>
+
+# Step 6. KQL
+<i>Kusto Query Language is designed for querying large datasets. It allows users to write queries to extract, manipulate, and visualize data</i>
+
+<br>
+
+![Screenshot (60)](https://github.com/user-attachments/assets/af669335-c67c-4cd9-b842-57dbb7608447)
+
+
