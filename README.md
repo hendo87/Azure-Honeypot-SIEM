@@ -419,11 +419,42 @@ Leave it set to LOG_Debug , and turn the rest to none</li>
 
 
 
-# Step 6. KQL
-<i>Kusto Query Language is designed for querying large datasets. It allows users to write queries to extract, manipulate, and visualize data</i>
+# Step 6. Building Attack Maps
+
+<i>We are building a Attack map for the Windows VM - RDP Authentication failures , 
+Linux - SSH Authentication Failures &
+Network Sucurity Groups - Malicous inbound network flow
+</i>
+<br>
+<ul>
+  
+<li>Go to JSON files<a href="https://github.com/joshmadakor1/Cyber-Course-v2/tree/main/Sentinel-Maps(JSON)"> Here </a> - We are only going to be dealing with , 
+nsg-malicious-allowed-in.json , 
+linux-ssh-auth-fail.json , 
+windows-rdp-auth-fail.json</li> 
+
+
+<li>Go back to Azure portal , Search Sentinel</li>
+<li>Workbooks > Add Workbooks > Edit</li>
+<li>Remove the existing workbook</li>
+<li>Add > Add Query > Advanced Editor</li>
+<li>Copy the linux-ssh-auth-fail.json files from the link and paste them into the editor</li> 
 
 <br>
 
-![Screenshot (60)](https://github.com/user-attachments/assets/af669335-c67c-4cd9-b842-57dbb7608447)
+![Screenshot (62)](https://github.com/user-attachments/assets/3a1de231-8104-4d35-8f7f-4f757d58dd04)
+
+<br>
+
+<li>Done editing > Save > Name your map " linux-ssh-auth-fail.json"</li>
+<li>Repeat steps to create maps for the windows-rdp-auth-fail.json and nsg-malicious-allowed-in.json</li>
+<li>You Map shoud look like this : </li>
+ 
+ <br>
+
+![Screenshot (63)](https://github.com/user-attachments/assets/a3b99810-58ea-41e3-8a67-37f4962e2a59)
+
+
+</ul>
 
 
