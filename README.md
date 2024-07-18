@@ -378,6 +378,47 @@ Leave it set to LOG_Debug , and turn the rest to none</li>
 
 <br>
 
+## Configure Blob Storage and Key Vault to forward logs to Log Analytic Workspace
+<i>Blob storage allows you to store unstructured data in the cloud as objects, or "blobs". These blobs can be any type of text or binary data, such as documents, media files, backups, logs, and more.</i>
+<br>
+
+<ul>
+<li>Search Storage</li>
+<li>Select your instance</li>
+<li>Monitoring > Diagnostic Settings</li>
+<li>Select Blob</li>
+<li>Add Diagnostic Settings</li>
+<li>Select Audit</li>
+<li>Destination Details : Send to log analytics workspace</li>
+<li>Save</li>
+
+<br>
+
+<i>Azure Key Vault is like a super secure digital safe where you can store and manage sensitive information like passwords, encryption keys, and certificates. It's designed to keep this information safe from unauthorized access and to help you control who can use it.</i>
+
+<br>
+
+<li>Search Key vault</li>
+<li>Select Create Key vault</li>
+<li>Select your resource group</li>
+<li>Key vault name : Create unique name</li> 
+<li>Select same region as your resources</li>
+<li>Next > </li>
+<li>Permission model > Vault Access Policy</li>
+<li>Review and create</li>
+<li>Search Key Vault again</li>
+<li>Select your Key vault instance you just created</li>
+<li>Monitoring > Diagnostic Settings</li>
+<li>Add diagnostic Settings</li>
+<li>Select Audit</li>
+<li>Destination Details : Send to Log analytics Workspace</li>
+
+</ul>
+
+
+
+
+
 # Step 6. KQL
 <i>Kusto Query Language is designed for querying large datasets. It allows users to write queries to extract, manipulate, and visualize data</i>
 
