@@ -457,6 +457,49 @@ windows-rdp-auth-fail.json</li>
 
 </ul>
 
+## Create Alerts for Microsoft Sentinel
+<ul>
+<li>Go to Microsoft Sentinel > Analytics > Active Rules </li>
+<li>Create Schedule Query Rule</li>
+<li>NAME : TEST: Brute Force ATTEMPT - Windows</li>
+<li>Description : When the same person fails to log in to the same VM more then 10 times</li>
+<li>Next > Rule Logic</li>
+<li>Paste in the KQL Query - 
+
+SecurityEvent 
+
+<br>
+
+| where EventID == 4625 
+
+<br>
+
+| where TimeGenerated > ago(60m)
+
+<br>
+
+| summarize FailureCount = count() by AttackerIP = IpAddress, EventID, Activity, DestinationHostName = Computer
+
+<br>
+
+| where FailureCount >= 10</li>
+
+<br>
+
+![Screenshot (64)](https://github.com/user-attachments/assets/b5104fa2-17e9-4b16-9847-b97b1eb3c0b4)
+
+
+
+
+
+<li>Add new Entity</li>
+<li>IP > Address > Attacker IP</li>
+<li>Host > Hostname > DestinationHostname</li>
+<li>Run Query: every 5 minutes</li>
+<li>Look up Data from the past 5 hours</li>
+<li>Next > Incident Settings > Next > Save</li>  
+</ul>
+
 
 
 
