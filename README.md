@@ -501,5 +501,87 @@ SecurityEvent
 </ul>
 
 
+## Importing ALerts
+<ul>
+  
+<li>Click<a href="https://github.com/joshmadakor1/Cyber-Course-V2/tree/main/Sentinel-Analytics-Rules"> Here</a> to download JSON files</li>
+<li>Go back Azure portal , Search Sentinel</li>
+<li>Analytics > Import</li>
+<li>Import in the JSON file you downloaded</li>
+
+<br>
+
+![Screenshot (9)](https://github.com/user-attachments/assets/dd89108a-bcb5-4562-a9cc-1cc465000a32)
+
+
+
+</ul>
+
+## Unsecured Environment STATS
+<i>Now that I've imported Sentinel Alerts , I will leave both Virtual Machines on for 24hrs and record all the alerts generated</i>
+
+<br>
+
+![Screenshot (77)](https://github.com/user-attachments/assets/f111a7b2-6bc8-4db8-a24a-c0babf89febe)
+
+
+# Working Incidents with NIST 800-61 Incident response
+
+
+## Preparation , Detection and Analysis , Containment, Eradication & Recovery , Post Incident Recovery
+
+<br>
+
+### Preparation phase - We've done this already by ingesting all the logs into Log Analytics Workspace and Sentinel , Also we created alerts
+
+### Detection and Analysis
+<i>As we work through the incident what we are trying to determine is whether this is a True or False Positive</i>
+
+<br>
+
+<li> Go to Sentinel > Incidents > Select First Incident > Change owner to yourself , Change status to active
+<li>Select view full details > Entities > Under entites click on the IP address associated with the incident </li>
+
+<br>
+
+<i>As you can see once you click on the IP address it gives you the Geo location of the attacker. This IP address is located in China. This could be a red flag</i>
+  
+<br>
+  
+  ![Screenshot (71)](https://github.com/user-attachments/assets/6fdbd7ca-a5f1-4063-bf45-ffa04cabefb4)
+
+  
+  
+  <li> Go to Activity logs</li>
+
+<br>
+
+<i>The activity log section is where we observe the history of the triggered alerts for this incident. As you can see from the screenshot below , the attacker tried to brute force the linux machine for a few hours</i>
+
+<br>
+
+![Screenshot (70)](https://github.com/user-attachments/assets/df947038-5d27-4d0e-be0a-f3e259f1ab22)
+
+
+<br>
+
+<li>Click Investigate</li>
+
+<br>
+
+<i>This gives us a visualization of the connections between the entites , you can also hover over the entity and see the related events connected with the IP address. Here we can see the IP address is associated with alot of alerts on our system</i>
+
+
+![Screenshot (72)](https://github.com/user-attachments/assets/b8d1f7cf-6b1b-48f3-a062-0f8eb272f204)
+
+
+<i>After investigating , due to the geolocation of the IP address , the amount of times this IP address has attempted to sign in , and also the different incidents this IP address is involved with im going to mark this as a True Positive and move on to the Containment phase</i>
+
+Containment , Eradication , Recovery
+Lock down the NSG assigned to that VM/Subnet , allow only neccesary traffic
+Reset affected users password
+Enable MFA
+
+
 
 
