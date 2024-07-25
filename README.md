@@ -535,11 +535,18 @@ SecurityEvent
 ### Preparation phase - We've done this already by ingesting all the logs into Log Analytics Workspace and Sentinel , Also we created alerts
 
 ### Detection and Analysis
-<i>As we work through the incident what we are trying to determine is whether this is a True or False Positive</i>
+<i>As we work through the incident what we are trying to determine is whether this is a True or False Positive. The first incident i will investigate is a Brute force attempt on our Linux Virtual Machine </i>
 
 <br>
 
-<li> Go to Sentinel > Incidents > Select First Incident > Change owner to yourself , Change status to active
+<li> Go to Sentinel > Incidents > Select First Incident > Change owner to yourself , Change status to active</li>
+
+
+
+![Screenshot (74)](https://github.com/user-attachments/assets/48adbd58-2aae-4110-9255-4656fb8e0781)
+
+
+
 <li>Select view full details > Entities > Under entites click on the IP address associated with the incident </li>
 
 <br>
@@ -577,10 +584,20 @@ SecurityEvent
 
 <i>After investigating , due to the geolocation of the IP address , the amount of times this IP address has attempted to sign in , and also the different incidents this IP address is involved with im going to mark this as a True Positive and move on to the Containment phase</i>
 
-Containment , Eradication , Recovery
-Lock down the NSG assigned to that VM/Subnet , allow only neccesary traffic
-Reset affected users password
-Enable MFA
+### Containment , Eradication , Recovery
+<i>I am going to lock down the Network Security Group assigned to that VM/Subnet , allow only neccesary traffic. Even though the would be attacker did not infiltrate our resources , the attacker should not have the oppurtunity to even brute force our system</i>
+
+<br>
+
+<ul>
+  <li>Go to virtual machines > Linux-VM > Networking > Click on the first rule > Change source to My IP address > Save</li>
+
+![Screenshot (75)](https://github.com/user-attachments/assets/d41c9fc8-ccc6-4ed2-9b45-1aa5b532cea2)
+
+
+  
+</ul>
+
 
 
 
