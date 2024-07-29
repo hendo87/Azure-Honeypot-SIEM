@@ -599,6 +599,56 @@ SecurityEvent
 </ul>
 
 
+# Hardening the Environment
 
+### Implementing Azure Private link
 
+<i>Azure Private Link is a service provided by Microsoft Azure that allows you to access Azure services and resources over a private connection. This means you can securely connect to these resources through a private IP address in your own virtual network (VNet), rather than over the public internet.</i>
 
+<ul>
+  <li>Go to Key Vault</li>
+  <li>Select your instance</li>
+  <li>Go to Networking</li>
+  <li>Firewalls and Virtual Networks > Disable Public Access</li>
+  <li>Go to Private endpoint connections</li>
+  <li>Create ></li>
+
+<br>
+
+![Screenshot (79)](https://github.com/user-attachments/assets/bc2a05f9-35fe-4441-ba70-ed7607c4b8b2)
+
+<br>
+
+  <li>Next > Resources</li>
+  <li>Resource type : Key Vault</li>
+  <li>Resource : Choose your instance</li>
+  <li>Next > Create</li>
+
+</ul>
+
+## Enable Regulatory Compliance for NIST 800-53 Access controls inside Microsoft Defender for Cloud
+
+<ul>
+<li>Go to Defender for Cloud ></li>
+<li>Regulatory Compliance ></li>
+<li>Manage Compliance Standards ></li>
+<li>Select your instance ></li>
+<li>Security Policy ></li>
+<li>Select NIST 800-53 Rev 5</li>
+ 
+  <br>
+  
+![Screenshot 7)](https://github.com/user-attachments/assets/bfa256f3-63d7-4c28-9b3d-e5d656a36943)
+
+ 
+</ul>
+
+## Result of Hardened Environment
+
+<br>
+
+<i>Now that our environment is hardened , we are going to leave our environment up for 24hrs and check the metrics.</i>
+
+<br>
+
+![Screenshot (80)](https://github.com/user-attachments/assets/0466428f-2c7b-416d-b727-de406a582b3c)
