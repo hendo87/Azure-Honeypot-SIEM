@@ -173,6 +173,9 @@ We will create the Linux VM the same way as the Windows VM except for a few mino
 
 # Step 4: Configure Microsoft Defender for Cloud
 
+<br>
+
+<i>Microsoft Defender is a comprehensive cloud security solution. It offers tools and services designed to protect cloud-based resources, including virtual machines, databases, and containers.</i>
 
 
 <ul><li>Search for "Microsoft Defender for Cloud"</li>
@@ -419,7 +422,7 @@ Leave it set to LOG_Debug , and turn the rest to none</li>
 
 
 
-# Step 6. Building Attack Maps
+# Step 6. Building Attack Maps & Creating Alerts for Sentinel
 
 <i>We are building a Attack map for the Windows VM - RDP Authentication failures , 
 Linux - SSH Authentication Failures &
@@ -501,7 +504,7 @@ SecurityEvent
 </ul>
 
 
-## Importing ALerts
+## Importing Alerts
 <ul>
   
 <li>Click<a href="https://github.com/joshmadakor1/Cyber-Course-V2/tree/main/Sentinel-Analytics-Rules"> Here</a> to download JSON files</li>
@@ -525,7 +528,7 @@ SecurityEvent
 ![Screenshot (77)](https://github.com/user-attachments/assets/f111a7b2-6bc8-4db8-a24a-c0babf89febe)
 
 
-# Working Incidents with NIST 800-61 Incident response
+# Step 7. Working Incidents with NIST 800-61 Incident response
 
 
 ## Preparation , Detection and Analysis , Containment, Eradication & Recovery , Post Incident Recovery
@@ -535,7 +538,7 @@ SecurityEvent
 ### Preparation phase - We've done this already by ingesting all the logs into Log Analytics Workspace and Sentinel , Also we created alerts
 
 ### Detection and Analysis
-<i>As we work through the incident what we are trying to determine is whether this is a True or False Positive. The first incident i will investigate is a Brute force attempt on our Linux Virtual Machine </i>
+<i>As we work through the incident what we are trying to determine is whether this is a True or False Positive. The first incident i will investigate is a Brute force attempt. </i>
 
 <br>
 
