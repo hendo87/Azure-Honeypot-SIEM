@@ -498,11 +498,59 @@ SecurityEvent
 ![Screenshot (72)](https://github.com/user-attachments/assets/b8d1f7cf-6b1b-48f3-a062-0f8eb272f204)
 
 
-<i>After investigating , this hacker was not able to brute force into the system. This IP address did not generate any successful login attempts. I will close this incident out as a false positive but before i do i'll make sure to notate everything i discovered in my investigation.</i>
+<p>After seeing the visuals of all the alerts triggered by this IP address , I wanted to check the logs in Sentinel to see if this IP address has triggered any successful log on attempts. I did so by writing this KQL scripts:</p>
+
+<li>SecurityEvent (This allows us to see the Windows Security Events)</li>
+<li>| where EventID == 4624 // (Filter for successful logon events) </li>
+<li>| where IpAddress == "159.27.11.148"</li>
+
+<br>
+
+![Screenshot (92)](https://github.com/user-attachments/assets/0b91da13-2860-4d89-84dc-9511acfbf856)
+
+
+<br>
+
+this hacker was not able to brute force into the system. This IP address did not generate any successful login attempts. I will close this incident out as a false positive but before i do i'll make sure to notate everything i discovered in my investigation.</i>
 
 <br>
 
 ![68747470733a2f2f692e696d6775722e636f6d2f6836347937674c2e706e67](https://github.com/user-attachments/assets/817121e8-3027-4bf2-907a-67a0b56e177d)
+
+<br>
+
+# Utilizing NIST 800.61 Computer Incident Handling Guide
+
+![Screenshot (93)](https://github.com/user-attachments/assets/36caeeca-59ae-45fa-98e0-810b216ecfcd)
+
+<br>
+
+<p>Each organization will have policies related to an incident response that should be followed. This event is just a walkthrough for possible actions to take in the detection of malware on a workstation.</p>
+
+### Preparation
+The Azure lab was set up to ingest all of the logs into Log Analytics Workspace, Sentinel and Defender were configured, and alert rules were put in place.
+
+### Detection & Analysis
+<li>Malware has been detected on a workstation with the potential to compromise the confidentiality, integrity, or availability of the system and data.</li>
+<li>Assigned alert to an owner, set the severity to "High", and the status to "Active"</li>
+<li>Identified the primary user account of the system and all systems affected.</li>
+<li>A full scan of the system was conducted using up-to-date antivirus software to identify the malware.</li>
+<li>Verified the authenticity of the alert as a "True Positive".</li>
+<li>Sent notifications to appropriate personnel as required by the organization's communication policies.</li>
+
+### Containment, Eradication & Recovery
+<li>The infected system and any additional systems infected by the malware were quarantined.</li>
+<li>If the malware was unable to be removed or the system sustained damage, the system would have been shut down and disconnected from the network.</li>
+<li>Depending on organizational policies the affected systems could be restored known clean state, such as a system image or a clean installation of the operating system and applications. Or an up-to-date anti-virus solution could be used to clean the systems.</li>
+
+### Post-Incident Activity
+<li>In this simulated case, an employee had downloaded a game that contained malware.</li>
+<li>All information was gathered and analyzed to determine the root cause, extent of damage, and effectiveness of the response.</li>
+<li>Report disseminated to all stakeholders.</li>
+<li>Corrective actions are implemented to remediate the root cause.</li>
+<li>And a lessons-learned review of the incident was conducted.</li>
+
+
 
 # Hardening the Environment 
 <i>I am going to lock down the Network Security Group assigned to that VM/Subnet , allow only neccesary traffic. Even though the would be attacker did not infiltrate our resources , the attacker should not have the oppurtunity to even brute force our system</i>
