@@ -3,7 +3,8 @@
 
 # Introduction
 <br>
-This project shows how to configure Windows and Linux honeypot vm’s. Connect vm’s with Windows Cloud Defender. Ingest logs from real traffic into Log Analytics Workspace. Use Microsoft Sentinel as our SIEM to read logs. Create a watchlist to build our attack maps. Use KQL to write alerts. Harden the environment with NIST 800-53 Access control and Azure Private Link. Then I simulate malware detection and work through NIST 800-61 incident response.
+This project shows how to configure Windows and Linux honeypot vm’s. Connect vm’s with Windows Cloud Defender. Ingest logs from real traffic into Log Analytics Workspace. Use Microsoft Sentinel as our SIEM to read logs. Create a watchlist to build our attack maps. Use KQL to write alerts. I simulate malware detection and work through NIST 800-61 incident response. Then I harden the environment with NIST 800-53 Access controls and Azure private link. Last but not least i compare the stats of the unsecure environment with the secure environment.
+
 
 # Azure Resources Deployed, Technologies, and Regulations used
 <br>
@@ -13,7 +14,7 @@ This project shows how to configure Windows and Linux honeypot vm’s. Connect v
 <li><a href="https://learn.microsoft.com/en-us/azure/virtual-network/network-security-groups-overview">Network Security Group</a> (NSG)</li>
 <li><a href="https://learn.microsoft.com/en-us/azure/virtual-machines/overview">Virtual Machines</a> (1x Windows 10 Pro, 1x Linux Server)</li>
 <li><a href="https://learn.microsoft.com/en-us/azure/azure-monitor/logs/log-analytics-workspace-overview">Log Analytic Workspace</a> (with Kusto Query Language KQL Queries)</li>
-<li><a href="https://learn.microsoft.com/en-us/azure/key-vault/general/basic-concepts">Azure Key Vault</a> (For Secure Secrets Management)</li>
+<li><a href="https://learn.microsoft.com/en-us/azure/private-link/private-link-overview">Azure Private Link</a> (Protects Azure Services)</li>
 <li><a href="https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview">Azure Storage Account</a> (For Data Storage)</li>
 <li><a href="https://learn.microsoft.com/en-us/azure/sentinel/overview?tabs=azure-portal">Microsoft Sentinel</a> (For Security Information and Event Management (SIEM)</li>
 <li><a href="https://learn.microsoft.com/en-us/azure/defender-for-cloud/defender-for-cloud-introduction">Microsoft Defender</a> (for Cloud to Protect Cloud Resources)</li>
@@ -364,63 +365,7 @@ Leave it set to LOG_Debug , and turn the rest to none</li>
 <li>Next > Finsih</li> 
 </ul>
 
-
-
-## Configuring Azure Activity Logs
-<i>The Activity logs are the Subsciription level logging system that logs any changes made to subscriptions such as modifying any of the Azure Resources you've created. We are going to forward all these logs to the Log Analytic Workspace</i>
-<ul>
-<li>Search Monitor > Activity log</li>
-<li>Export Activity logs > Add diagnostic Settings</li>
-<li>Diagnostic setting name : choose unique name</li>
-<li>Select all categories</li>
-<li>Destination details select : Send to log analytics Workspace</li>
-<li>Save</li>
-</ul>
-
-![Screenshot (61)](https://github.com/user-attachments/assets/f375ef0b-8109-4198-9185-19c83e5e93fa)
-
 <br>
-
-## Configure Blob Storage and Key Vault to forward logs to Log Analytic Workspace
-<i>Blob storage allows you to store unstructured data in the cloud as objects, or "blobs". These blobs can be any type of text or binary data, such as documents, media files, backups, logs, and more.</i>
-<br>
-
-<ul>
-<li>Search Storage</li>
-<li>Select your instance</li>
-<li>Monitoring > Diagnostic Settings</li>
-<li>Select Blob</li>
-<li>Add Diagnostic Settings</li>
-<li>Select Audit</li>
-<li>Destination Details : Send to log analytics workspace</li>
-<li>Save</li>
-
-<br>
-
-<i>Azure Key Vault is like a super secure digital safe where you can store and manage sensitive information like passwords, encryption keys, and certificates. It's designed to keep this information safe from unauthorized access and to help you control who can use it.</i>
-
-<br>
-
-<li>Search Key vault</li>
-<li>Select Create Key vault</li>
-<li>Select your resource group</li>
-<li>Key vault name : Create unique name</li> 
-<li>Select same region as your resources</li>
-<li>Next > </li>
-<li>Permission model > Vault Access Policy</li>
-<li>Review and create</li>
-<li>Search Key Vault again</li>
-<li>Select your Key vault instance you just created</li>
-<li>Monitoring > Diagnostic Settings</li>
-<li>Add diagnostic Settings</li>
-<li>Select Audit</li>
-<li>Destination Details : Send to Log analytics Workspace</li>
-
-</ul>
-
-
-
-
 
 # Step 6. Building Attack Maps & Creating Alerts for Sentinel
 
@@ -520,37 +465,18 @@ SecurityEvent
 
 </ul>
 
-## Unsecured Environment STATS
-<i>Now that I've imported Sentinel Alerts , I will leave both Virtual Machines on for 24hrs and record all the alerts generated</i>
 
-<br>
+# Step 7. Working Incidents 
 
-![Screenshot (77)](https://github.com/user-attachments/assets/f111a7b2-6bc8-4db8-a24a-c0babf89febe)
+<i>Now that i've left the Vm's up for 24hrs with our firewall rules disabled. I've given bad actors plenty of time to attack the environment and generate incidents</i>
 
 
-# Step 7. Working Incidents with NIST 800-61 Incident response
-
-
-## Preparation , Detection and Analysis , Containment, Eradication & Recovery , Post Incident Recovery
-
-<br>
-
-### Preparation phase - We've done this already by ingesting all the logs into Log Analytics Workspace and Sentinel , Also we created alerts
-
-### Detection and Analysis
-<i>As we work through the incident what we are trying to determine is whether this is a True or False Positive. The first incident i will investigate is a Brute force attempt. </i>
-
-<br>
-
-<li> Go to Sentinel > Incidents > Select First Incident > Change owner to yourself , Change status to active</li>
+<li> Go to Sentinel > Incidents > Select First Incident > Change owner to yourself , Change status to active > Select view full details</li>
 
 
 
-![Screenshot (74)](https://github.com/user-attachments/assets/48adbd58-2aae-4110-9255-4656fb8e0781)
+![68747470733a2f2f692e696d6775722e636f6d2f385a504d384d6a2e706e67](https://github.com/user-attachments/assets/dc2a1134-973f-4939-99ed-11a7e5b55e4e)
 
-
-
-<li>Select view full details > Entities > Under entites click on the IP address associated with the incident </li>
 
 <br>
 
@@ -558,20 +484,7 @@ SecurityEvent
   
 <br>
   
-  ![Screenshot (71)](https://github.com/user-attachments/assets/6fdbd7ca-a5f1-4063-bf45-ffa04cabefb4)
-
-  
-  
-  <li> Go to Activity logs</li>
-
-<br>
-
-<i>The activity log section is where we observe the history of the triggered alerts for this incident. As you can see from the screenshot below , the attacker tried to brute force the linux machine for a few hours</i>
-
-<br>
-
-![Screenshot (70)](https://github.com/user-attachments/assets/df947038-5d27-4d0e-be0a-f3e259f1ab22)
-
+<i>Also The activity log section is where we observe the history of the triggered alerts for this incident. As you can see from the screenshot, the attacker has been triggering alerts over a span of hours. Lets investigate further</i>
 
 <br>
 
@@ -585,9 +498,13 @@ SecurityEvent
 ![Screenshot (72)](https://github.com/user-attachments/assets/b8d1f7cf-6b1b-48f3-a062-0f8eb272f204)
 
 
-<i>After investigating , due to the geolocation of the IP address , the amount of times this IP address has attempted to sign in , and also the different incidents this IP address is involved with im going to mark this as a True Positive and move on to the Containment phase</i>
+<i>After investigating , this hacker was not able to brute force into the system. This IP address did not generate any successful login attempts. I will close this incident out as a false positive but before i do i'll make sure to notate everything i discovered in my investigation.</i>
 
-### Containment , Eradication , Recovery
+<br>
+
+![68747470733a2f2f692e696d6775722e636f6d2f6836347937674c2e706e67](https://github.com/user-attachments/assets/817121e8-3027-4bf2-907a-67a0b56e177d)
+
+# Hardening the Environment 
 <i>I am going to lock down the Network Security Group assigned to that VM/Subnet , allow only neccesary traffic. Even though the would be attacker did not infiltrate our resources , the attacker should not have the oppurtunity to even brute force our system</i>
 
 <br>
@@ -602,7 +519,6 @@ SecurityEvent
 </ul>
 
 
-# Hardening the Environment
 
 ### Implementing Azure Private link
 
