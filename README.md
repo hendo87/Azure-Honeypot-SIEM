@@ -3,7 +3,7 @@
 
 # Introduction
 <br>
-This project shows how to configure Windows and Linux honeypot vm’s. Connect vm’s with Windows Cloud Defender. Ingest logs from real traffic into Log Analytics Workspace. Use Microsoft Sentinel as our SIEM to read logs. Create a watchlist to build our attack maps. Use KQL to write alerts. I simulate malware detection and work through NIST 800-61 incident response. Then I harden the environment with NIST 800-53 Access controls and Azure private link. Last but not least i compare the stats of the unsecure environment with the secure environment.
+In this project, a mini honeynet was constructed in Microsoft Azure and log sources were integrated into a Log Analytics workspace. Microsoft Sentinel was employed to trigger alerts and create incidents based on the ingested logs. Additionally, metrics were measured in the insecure environment before security controls were applied, and then again after implementing security measures. It is noteworthy that the number of security events and incidents were drastically reduced after the security controls were applied, demonstrating their effectiveness.
 
 
 # Azure Resources Deployed, Technologies, and Regulations used
@@ -610,12 +610,37 @@ The Azure lab was set up to ingest all of the logs into Log Analytics Workspace,
  
 </ul>
 
-## Result of Hardened Environment
+
+## Metrics Before Hardening / Security Controls
+
+The following table shows the metrics we measured in our insecure environment for 24 hours:
+Start Time 2024-07-15 17:04:29
+Stop Time 2024-07-16 17:04:29
+
+| Metric                   | Count
+| ------------------------ | -----
+| SecurityEvent            | 19470
+| Syslog                   | 3028
+| SecurityAlert            | 10
+| SecurityIncident         | 348
+| AzureNetworkAnalytics_CL | 843
+
+
+## Metrics After Hardening / Security Controls
+
+The following table shows the metrics we measured in our environment for another 24 hours, but after we have applied security controls:
+Start Time 2024-07-18 15:37
+Stop Time	2024-07-19 15:37
+
+| Metric                   | Count
+| ------------------------ | -----
+| SecurityEvent            | 8778
+| Syslog                   | 25
+| SecurityAlert            | 0
+| SecurityIncident         | 0
+| AzureNetworkAnalytics_CL | 0
+
 
 <br>
 
-<i>Now that our environment is hardened , we are going to leave our environment up for 24hrs and check the metrics.</i>
-
-<br>
-
-![Screenshot (80)](https://github.com/user-attachments/assets/0466428f-2c7b-416d-b727-de406a582b3c)
+Thank you
